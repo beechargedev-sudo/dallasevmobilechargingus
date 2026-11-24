@@ -5,3 +5,4 @@
 
 ## 2026-11-24
 - Rebuilt on the new template: charcoal/crimson/lime theme (Sora + Manrope), sourced /dallas-ev-data/ page, one sourced winter storm guide, single /service-area/ page. Removed the per-city and neighborhood pages (about 80 thin, templated URLs); /locations/* now 301s to /service-area/.
+- Deployed to Hostinger Cloud (build 01a20d0a, commit 4404a57). Sitemap (16 URLs) resubmitted in Search Console; IndexNow (Bing) accepted 16 URLs. Live check in Chrome blocked by Hostinger bot verification page, so tags and redirects still need a visual confirmation.
