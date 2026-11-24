@@ -23,10 +23,16 @@ const securityHeaders = [
   { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(), payment=()' },
 ];
 
+// STATIC_EXPORT=1 builds plain HTML into out/ for PHP/HTML shared hosting (headers, redirects and the
+// tracker proxy then live in out/.htaccess and out/_a/proxy.php, written by scripts/static-extras.mjs).
+const STATIC = process.env.STATIC_EXPORT === '1';
+
 const nextConfig: NextConfig = {
+  ...(STATIC ? { output: 'export' as const, images: { unoptimized: true } } : {}),
   poweredByHeader: false,
   reactStrictMode: true,
   trailingSlash: true,
+  ...(STATIC ? {} : {
   async headers() {
     return [
       { source: '/:path*', headers: securityHeaders },
@@ -43,8 +49,14 @@ const nextConfig: NextConfig = {
     ];
   },
   async redirects() {
-    return [{ source: '/index.html', destination: '/', permanent: true }];
+    return [
+      { source: '/index.html', destination: '/', permanent: true },
+      // Old per-area and neighborhood pages are consolidated into one service-area page.
+      { source: '/locations', destination: '/service-area/', permanent: true },
+      { source: '/locations/:path*', destination: '/service-area/', permanent: true },
+    ];
   },
+  }),
 };
 
 export default nextConfig;

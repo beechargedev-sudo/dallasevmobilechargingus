@@ -1,20 +1,30 @@
 @import "tailwindcss";
-@import "@fontsource-variable/inter";
-@import "@fontsource/barlow-condensed/600.css";
-@import "@fontsource/barlow-condensed/700.css";
-@import "@fontsource/barlow-condensed/800.css";
+@import "@fontsource-variable/manrope";
+@import "@fontsource-variable/sora";
 
 @theme {
-  --color-ink: #0b0b0c;
-  --color-gold: #f5b700;
-  --color-paper: #f7f6f1;
-  --font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
-  --font-sans: 'Inter Variable', system-ui, sans-serif;
+  --color-navy: #14171f;
+  --color-navy-2: #232a36;
+  --color-brand: #c8102e;
+  --color-brand-2: #9f0d25;
+  --color-volt: #a3e635;
+  --color-mist: #f6f5f2;
+  --color-line: #e4e1da;
+  --color-slate: #555260;
+  --font-display: 'Sora Variable', system-ui, sans-serif;
+  --font-sans: 'Manrope Variable', system-ui, sans-serif;
 }
 html { scroll-behavior: smooth; }
-body { font-family: var(--font-sans); background: var(--color-ink); color: var(--color-ink); -webkit-font-smoothing: antialiased; }
-.hero-bg { background: radial-gradient(900px 400px at 85% 0%, rgba(245,183,0,.22), transparent 60%), linear-gradient(135deg, #0b0b0c 0%, #1a1a1d 100%); }
+body { font-family: var(--font-sans); background: var(--color-navy); color: var(--color-navy); -webkit-font-smoothing: antialiased; }
+/* hero-bg: neon glow over midnight */
+.hero-bg { background: radial-gradient(760px 520px at 94% 108%, rgba(163,230,53,.55), transparent 62%), radial-gradient(640px 420px at 6% -8%, rgba(200,16,46,.30), transparent 60%), linear-gradient(165deg, #14171f 0%, #232a36 100%); }
+.grid-lines { background-image: radial-gradient(rgba(255,255,255,.10) 1.2px, transparent 1.4px); background-size: 28px 28px; mask-image: radial-gradient(ellipse at 30% 30%, #000 15%, transparent 70%); }
+.sun { background: radial-gradient(circle at 50% 50%, rgba(163,230,53,.55), rgba(200,16,46,.16) 55%, transparent 70%); filter: blur(8px); }
+.glass { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); backdrop-filter: blur(10px); }
+.grad-text { background: linear-gradient(90deg, #d9f99d, #a3e635 45%, #fda4af); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .faq-item summary { list-style: none; }
 .faq-item summary::-webkit-details-marker { display: none; }
 .faq-item[open] .faq-plus { transform: rotate(45deg); }
-:focus-visible { outline: 3px solid var(--color-gold); outline-offset: 2px; }
+.menu-group:hover .menu-panel, .menu-group:focus-within .menu-panel { display: grid; }
+:focus-visible { outline: 3px solid var(--color-volt); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }

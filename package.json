@@ -2,8 +2,10 @@
   "name": "dallasevmobilechargingus",
   "version": "1.0.0",
   "private": true,
-  "description": "EV Mobile Charging Dallas: mobile EV charging website (dallasevmobilecharging.us), hosted on Hostinger Cloud",
-  "engines": { "node": ">=20.9" },
+  "description": "EV Mobile Charging Miami: mobile EV charging website (evmobilechargingmiami.us), Next.js on Hostinger Cloud",
+  "engines": {
+    "node": ">=20.9"
+  },
   "scripts": {
     "prebuild": "node scripts/prebuild.mjs",
     "dev": "next dev",
@@ -11,10 +13,14 @@
     "start": "next start",
     "lint": "tsc --noEmit",
     "check": "node scripts/check-site.mjs",
-    "indexnow": "node scripts/indexnow.mjs"
+    "indexnow": "node scripts/indexnow.mjs",
+    "build:static": "STATIC_EXPORT=1 npm run build && node scripts/static-extras.mjs"
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.2.5",
+    "@fontsource-variable/manrope": "^5.3.0",
+    "@fontsource-variable/sora": "^5.3.0",
+    "@fontsource-variable/space-grotesk": "^5.3.0",
     "@fontsource/barlow-condensed": "^5.2.5",
     "clsx": "^2.1.1",
     "lucide-react": "^0.545.0",

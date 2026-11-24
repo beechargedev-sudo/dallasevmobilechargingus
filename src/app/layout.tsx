@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     other: process.env.NEXT_PUBLIC_BING_VERIFICATION ? { 'msvalidate.01': process.env.NEXT_PUBLIC_BING_VERIFICATION } : undefined,
   },
 };
-export const viewport: Viewport = { themeColor: '#0b0b0c', width: 'device-width', initialScale: 1 };
+export const viewport: Viewport = { themeColor: '#14171f', width: 'device-width', initialScale: 1 };
 
 const org = {
   '@context': 'https://schema.org',
@@ -32,12 +32,12 @@ const org = {
       url: `${SITE_URL}/`,
       logo: `${SITE_URL}/favicon.svg`,
       image: `${SITE_URL}/images/og-default.jpg`,
-      description: 'Mobile EV charging, fleet and business charging and EV charger installation across Dallas-Fort Worth, Texas.',
+      description: 'Mobile EV charging, fleet and business charging and EV charger installation across the Dallas-Fort Worth area.',
       foundingDate: String(BRAND.founded),
       email: BRAND.email,
       telephone: BRAND.phoneE164,
       address: { '@type': 'PostalAddress', streetAddress: BRAND.street, addressLocality: BRAND.locality, addressRegion: BRAND.region, postalCode: BRAND.zip, addressCountry: 'US' },
-      areaServed: AREAS.map((a) => ({ '@type': 'City', name: `${a.name}, TX` })),
+      areaServed: [{ '@type': 'State', name: 'Texas', containedInPlace: { '@type': 'Country', name: 'United States' } }, ...AREAS.map((a) => ({ '@type': 'City', name: `${a.name}, TX` }))],
       contactPoint: { '@type': 'ContactPoint', telephone: BRAND.phoneE164, email: BRAND.email, contactType: 'customer service', areaServed: 'US', availableLanguage: 'English' },
       hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Mobile EV charging services in Dallas', itemListElement: SERVICES.map((s) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: s.title, description: s.blurb, url: `${SITE_URL}${servicePath(s.slug)}` } })) },
     },

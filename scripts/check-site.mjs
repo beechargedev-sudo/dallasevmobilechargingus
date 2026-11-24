@@ -1,7 +1,7 @@
 // Crawls a running site and checks every sitemap URL for SEO essentials.
 // Usage: BASE=http://127.0.0.1:3000 node scripts/check-site.mjs  (CANONICAL defaults to production URL)
 const BASE = (process.env.BASE || 'http://127.0.0.1:3000').replace(/\/$/, '');
-const CANON = (process.env.CANONICAL || process.env.NEXT_PUBLIC_SITE_URL || 'https://dallasevmobilecharging.us').replace(/\/$/, '');
+const CANON = (process.env.CANONICAL || process.env.NEXT_PUBLIC_SITE_URL || 'https://evmobilechargingdallas.us').replace(/\/$/, '');
 const problems = [];
 const add = (u, m) => problems.push(`${u}: ${m}`);
 

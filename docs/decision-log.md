@@ -7,3 +7,7 @@
 - No prices, reviews, client names or response-time promises. Quote-based; phone and email only.
 - 5 services, 10 Dallas-Fort Worth area pages and neighborhood pages with general-geography notes only. Coverage list is a draft; owner to confirm.
 - Bee HQ counter is proxied through this domain (`/_a/t.js`, `/api/t`) and only enabled when BEEHQ_ORIGIN and NEXT_PUBLIC_BEEHQ_SITE_ID are set.
+
+## 2026-11-24
+- Dallas stays a Node app on Hostinger Cloud with Git auto-deploy and the env vars already stored in hPanel.
+- Hurricane content replaced by a winter storm guide because ice storms, not hurricanes, are the local risk.

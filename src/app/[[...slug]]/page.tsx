@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ROUTES, resolveRoute, NOT_FOUND } from '@/routes';
 import { BRAND } from '@/lib/brand';
-import { abs } from '@/lib/site';
+import { abs, CONTENT_UPDATED, CONTENT_PUBLISHED } from '@/lib/site';
+import { JsonLd } from '@/components/site/ui';
 import { isIndexable } from '@/lib/indexing';
 
 export const dynamicParams = false;
@@ -31,5 +32,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug?: st
 export default async function Page({ params }: { params: Promise<{ slug?: string[] }> }) {
   const route = resolveRoute(toPath((await params).slug));
   if (route === NOT_FOUND) notFound();
-  return route.render();
+  const type = route.kind === 'contact' ? 'ContactPage' : route.kind === 'about' ? 'AboutPage' : ['hub', 'locations'].includes(route.kind) ? 'CollectionPage' : 'WebPage';
+  return (
+    <>
+      {route.render()}
+      <JsonLd data={{ '@context': 'https://schema.org', '@type': type, '@id': `${abs(route.path)}#webpage`, url: abs(route.path), name: route.title, description: route.description, inLanguage: 'en-US', isPartOf: { '@id': `${abs('/')}#website` }, about: { '@id': `${abs('/')}#organization` }, primaryImageOfPage: { '@type': 'ImageObject', url: abs('/images/og-default.jpg'), width: 1200, height: 630 }, datePublished: CONTENT_PUBLISHED, dateModified: CONTENT_UPDATED }} />
+    </>
+  );
 }

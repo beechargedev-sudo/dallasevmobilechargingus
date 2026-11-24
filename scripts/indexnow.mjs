@@ -6,7 +6,7 @@
 // Requires INDEXNOW_KEY and NEXT_PUBLIC_SITE_URL. Logs results to logs/indexnow.log. Max 10,000 URLs per request.
 import { appendFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 
-const SITE = (process.env.NEXT_PUBLIC_SITE_URL || 'https://dallasevmobilecharging.us').replace(/\/$/, '');
+const SITE = (process.env.NEXT_PUBLIC_SITE_URL || 'https://evmobilechargingdallas.us').replace(/\/$/, '');
 const KEY = (process.env.INDEXNOW_KEY || '').trim();
 if (!KEY) { console.error('INDEXNOW_KEY not set'); process.exit(1); }
 const host = new URL(SITE).host;
